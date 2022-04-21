@@ -1,0 +1,313 @@
+/*Variables de colores*/
+:root{
+    --bg-main: #f7f7f8;
+    --bg-secondary: #019267;
+    --color-green2: #7FFFD4;
+    --color-orange: #FFD365;
+    --color-yellow: #FDFFA9;
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+    --bg-img: #C6C6C6;
+}
+/*Estilos univiersales*/
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+/*Estilos del html*/
+html{
+    background-color: var(--bg-main);
+}
+/*Estilos de titulos H1*/
+h1{
+    font-size: 32px;
+    font-weight: 700;
+}
+/*Estilos del header, logo, menu, icons. Se utiliza con grid 2 columnas*/
+.header{
+    display: grid;
+    width: 100%;
+    height: 4rem;
+    grid-template-columns: 50% 50%;
+    grid-auto-rows: minmax(4rem,auto);
+    position: fixed;
+}
+/*Estilo del area de la columna 1, donde se encuentra el logo y el titulo de la web */
+.logo-area{
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    gap: 4%;
+    padding-left: 3%;
+}
+/* Estilo texto del logo */ 
+.logo-area>span{
+    color: var(--bg-secondary)
+}
+
+/*Estilo del logo > img de la columna 1 del header*/
+.logo-area>img{
+    width: 36px;
+    height: 36px;
+    
+}
+/*Estilo del titulo a lado del logo, se encuentra en la columan 1 del header*/
+.title{
+    font-size: 14px;
+    font-weight: 600;
+    
+}
+/*Estilos de los iconos del menu, este se encuentra en la columa 2 del header*/
+.menu-icons{
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: center;
+gap: 1.5rem;
+margin-right: 5%;
+}
+
+/*Estilo unico orientado a acomodar el icono del menu hamburguesa*/
+#icon-bas{
+    margin-left: -2.25rem;
+}
+/*Estilos unicos de los ul del menu hamburguesa en mobile*/
+input#menu-hamburguesa ~ ul{
+    background-color: var(--bg-main);
+    list-style: none;
+    position: absolute;
+    width: 100%;
+    height:100vh;
+    left: 100%;
+    top:4rem;
+    transition: all 300ms linear;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: 600;
+    font-size: 18px;
+
+}
+/*Estilo unico que oculta el checkbox del menu hamburguesa*/
+input#menu-hamburguesa{
+    visibility: hidden;
+}
+/*Estillo unico para mostrar el menu hamburguesa al dar clic en el icono*/
+input#menu-hamburguesa:checked~ul{
+    left: 0;
+}
+.menu-web{
+    list-style: none;
+    visibility: hidden;
+}
+.menu-web > li{
+    display: inline-block;
+}
+/*Estilo para el main container con grid, esta optimizado para ser responsivo*/
+.main-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(50%, 50%), 1fr)); 
+    gap: 1rem;
+}
+/*Estilos para la seccion de informacion del producto del home (titulo, descripcion, precio y botones) con flexbox*/
+.home-product{
+    background-color: var(--color-green2);
+    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 35%;
+}
+
+/*Estilo para el titulo de la informacion del producto en el home*/
+.producto-info-home{
+margin-left: 5%;
+margin-right: 5%;
+padding-top: 5%;
+}
+/*Estilo para la descripcion de la informacion del producto en el home*/
+.description-product-home{
+    color: var(--color-grey);
+    font-size: 14px;
+    font-weight: 500;
+}
+/*Estilo para el precio, en la informacion del producto en el home*/
+.price-home{
+    color: var(--bg-secondary);
+    font-weight: 600;
+    font-size: 20px;
+}
+/*Estilo para los botones de la informacion del producto en el home*/
+.buttons-home{
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 10%;
+}
+/*Estilo para el boton 1 (descubir) del producto en el home*/
+.descubre{
+    background-color: rgb(195, 195, 195);
+    padding: 4%;
+}
+/*Estilo para el boton 2 (add-cart) del producto en el home*/
+.add-cart{
+    background-color: rgb(38, 38, 38);
+    padding: 5%;
+    box-shadow: 0px 10px 20px rgba(55, 55, 55, 0.379);
+}
+/*Estilo para modificar el anchor del boton 1*/
+.descubre > a{
+    text-decoration: none;
+    color: var(--color-black);
+    font-weight: 600;
+    font-size: 14px;
+}
+/*Estilo para modificar el anchor del boton 2*/
+.add-cart > a{
+    text-decoration: none;
+    color: var(--color-white);
+    font-weight: 600;
+    font-size: 14px;
+}
+.category-products{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    row-gap: 2rem;
+    width: 90%;
+    margin: auto;
+    margin-top: 7rem;
+    margin-bottom: 7rem;
+}
+.c1{
+    border-right: 1px solid rgb(131, 131, 131);
+    width: 100%;
+}
+.c1 > ul{
+    list-style: none;
+    text-align: center;
+    padding-right: 1rem;
+    
+}
+.c1 > ul > li{
+    line-height: 1.6rem;
+    
+}
+.c1 > ul > li > a{
+    text-decoration: none;
+    font-size: 12px;
+    color: hsl(0deg 0% 35%);
+    font-weight: 400;
+
+}
+.title-products{
+    color: hsl(0deg 0% 35%);
+    font-size: 17px;
+    font-weight: 600;
+}
+
+/* Estilo para los contenedores de los productos */
+.misArticulos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 3fr));
+    gap: 3rem;
+    grid-template-rows: auto;
+    justify-content: center;
+    align-items: center;
+}
+.misArticulos > div {
+    border: 1px solid red;
+    display: grid;
+    grid-template-areas: 'imagen imagen'
+                         'precio boton';
+    /* grid-template-rows: repeat(auto-fill, 1fr);  */
+    justify-content: center;  
+    align-self: center; 
+    -moz-border-radius: 5%;
+    -webkit-border-radius: 5%;
+    border-radius: 5%;
+    background-color: var(--bg-img)
+}
+.imgcontainer {
+    grid-area: imagen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nombre-precio {
+    grid-area: precio;
+}
+.boton {
+    grid-area: boton;
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+    bottom: 65%;
+}
+.boton > button {
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--card-color);
+  }
+  
+  .footer__container {
+    row-gap: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 3rem;
+  }
+  
+  .footer__title {
+    font-size: var(--h2-font-size);
+    margin-bottom: var(--mb-1-5);
+  }
+  
+  .footer__list, 
+  .footer__links {
+    display: flex;
+    flex-direction: column;
+    row-gap: .75rem;
+  }
+  
+  .footer__link {
+    color: var(--text-color);
+  }
+  
+  .footer__link:hover {
+    color: var(--title-color);
+  }
+  
+  .footer__social {
+    display: flex;
+    column-gap: 1rem;
+  }
+  
+  .footer__social-link {
+    font-size: 1.25rem;
+    color: var(--text-color);
+  }
+  
+  .footer__social-link:hover {
+    color: var(--title-color);
+  }
+  
+  .footer__copy {
+    display: block;
+    margin: 3.5rem 0 1rem 0;
+    text-align: center;
+    font-size: var(--smaller-font-size);
+    color: var(--text-color-light);
+  }
+  
