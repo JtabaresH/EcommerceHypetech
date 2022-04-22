@@ -211,14 +211,6 @@ padding-top: 5%;
 }
 
 /* Estilo para los contenedores de los productos */
-#contenedor-productos {
-    max-width: 1200px;
-    margin: 60px auto;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
 .container{
     width: 100%;
     max-width: 1200px;
