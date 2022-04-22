@@ -19,6 +19,7 @@
 /*Estilos del html*/
 html{
     background-color: var(--bg-main);
+    scroll-behavior: smooth;
 }
 /*Estilos de titulos H1*/
 h1{
@@ -148,19 +149,16 @@ padding-top: 5%;
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
-    margin-top: 10%;
-}
+    margin-top: 10%;}
 /*Estilo para el boton 1 (descubir) del producto en el home*/
 .descubre{
     background-color: rgb(195, 195, 195);
-    padding: 4%;
-}
+    padding: 4%;}
 /*Estilo para el boton 2 (add-cart) del producto en el home*/
 .add-cart{
     background-color: rgb(38, 38, 38);
     padding: 5%;
-    box-shadow: 0px 10px 20px rgba(55, 55, 55, 0.379);
-}
+    box-shadow: 0px 10px 20px rgba(55, 55, 55, 0.379);}
 /*Estilo para modificar el anchor del boton 1*/
 .descubre > a{
     text-decoration: none;
@@ -213,11 +211,17 @@ padding-top: 5%;
 }
 
 /* Estilo para los contenedores de los productos */
+#contenedor-productos {
+    max-width: 1200px;
+    margin: 60px auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 
 .container{
     width: 100%;
     max-width: 1200px;
-    height: 430px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -263,7 +267,7 @@ padding-top: 5%;
     color: var(--color-green2);
 }
 
-.container .card button {
+.container .card .boton-agregar {
     text-decoration: none;
     font-weight: 600;
     font-size: 15px;
@@ -280,14 +284,16 @@ padding-top: 5%;
 }
 
 /* Footer */
-/* .pie {
+.pie {
     background-color: #242635;
-    margin-top: 30%;
+    margin-top: 5%;
     justify-content: center;
-    position: absolute;
     width: 100%;
-    left: 0;}
+    left: 0;
+}
+
+
 .pie > p {
     color: #34B0BE;
     text-align: center;
-    padding: 2% 0 2% 0;} */
+    padding: 2% 0 2% 0;}
