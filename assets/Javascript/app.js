@@ -4,6 +4,7 @@ let ventanaCarrito1 = document.getElementById('cerrar-carrito');
 let clicBoton = document.getElementById('ventanaCarrito');
 clic = 0;
 
+
 /* NavBar efecto scroll */
 window.onscroll = () => {
     let menu = document.getElementById('menu');

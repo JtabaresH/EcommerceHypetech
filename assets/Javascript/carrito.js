@@ -17,7 +17,20 @@ class Carrito{
             id: producto.querySelector('button').getAttribute('data-id'),
             cantidad: 1
         }
-        this.insertarCarrito(infoProducto);
+        let productosLS;
+        productosLS = this.inLocalStorage();
+        productosLS.forEach(function(productoLS) {
+            if(productoLS.id === infoProducto.id){
+                productosLS = productoLS.id;
+
+            }
+        });
+        if (productosLS === infoProducto.id){
+            alert('Producto agregado - me falta sumar cantidad y precio total')
+        } else {
+            this.insertarCarrito(infoProducto);
+        }
+        
     }
 
     /* Insertar datos del producto en el carrito */
