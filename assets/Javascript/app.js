@@ -1,79 +1,64 @@
 const contenedorProductos = document.getElementById('container')
-const contenedorCarrito = document.getElementById('carrito-contenedor')
-const botonVaciar = document.getElementById('vaciar-carrito')
-const precioTotal = document.getElementById('precioTotal')
-let carrito = []
+let ventanaCarrito = document.getElementById('boton-carrito');
+let ventanaCarrito1 = document.getElementById('cerrar-carrito');
+let clicBoton = document.getElementById('ventanaCarrito');
+clic = 0;
 
-document.addEventListener('DOMContentLoaded', () => {
-    if (localStorage.getItem('carrito')){
-        carrito = JSON.parse(localStorage.getItem('carrito'))
-        actualizarCarrito()
+/* NavBar efecto scroll */
+window.onscroll = () => {
+    let menu = document.getElementById('menu');
+  if (window.scrollY > 45) {
+      menu.style.background = "#FFFFFF";
+      menu.style.boxShadow = "0px 0px 5px gray";
+      menu.style.transition = "all 300ms linear";
+    } else {
+      menu.style.background = "transparent";
+      menu.style.boxShadow = "none";
+      menu.style.transition = "all 300ms linear";
     }
+  }
+
+/* Añadir stock de productos */
+stockProductos.forEach((contProducto) => {
+    const div = document.createElement('div')
+    div.classList.add('card')
+    div.innerHTML = `
+    <img src=${contProducto.img} alt="">
+    <h4>${contProducto.nombre}</h4>
+    <p>Stock: ${contProducto.stock} Und</p>
+    <p class="price">Precio: $<span>${contProducto.precio}</span> USD</p>
+    <button data-id=${contProducto.id} id="agregar-carrito" class="agregar-carrito">Añadir al carrito</button>
+    `
+    contenedorProductos.appendChild(div)
 })
 
-botonVaciar.addEventListener('click', () => {
-    carrito.length = 0
-    actualizarCarrito()
-})
+/* Carrito de compras */
+function mover() {
+    if(clic===0){
+        clicBoton.style.left="0";
+        clicBoton.style.transition="all 300ms linear";
+        clic++;
+    } else{
+        clicBoton.style.left="100%";   
+        clicBoton.style.transition="all 300ms linear"; 
+        clic--;
+        }   
+}
+ventanaCarrito.addEventListener('click', mover, true);
+ventanaCarrito1.addEventListener('click', mover, true);
 
-stockProductos.forEach((producto) => {
+
+
+/* Copia de agregar articulos */
+/* stockProductos.forEach((producto) => {
     const div = document.createElement('div')
     div.classList.add('card')
     div.innerHTML = `
     <img src=${producto.img} alt="">
     <h4>${producto.nombre}</h4>
-    <p>Stock: ${producto.cantidad}</p>
+    <p>Stock: ${producto.stock}</p>
     <p>Precio: ${producto.precio} USD</p>
     <button id="agregar${producto.id}" class="boton-agregar">Añadir al carrito</button>
     `
     contenedorProductos.appendChild(div)
-
-    const boton = document.getElementById(`agregar${producto.id}`)
-    
-    boton.addEventListener('click', () => {
-        agregarAlCarrito(producto.id)
-    })
-})
-
-const agregarAlCarrito = (prodId) => {
-    const existe = carrito.some(prod => prod.id === prodId)
-    if (existe) {
-        const producto = carrito.map(prod => {
-            if (prod.id === prodId){
-                prod.cantidad++
-            }
-        })
-    } else {
-        const item = stockProductos.find((prod) => prod.id === prodId)
-        carrito.push(item)
-    }
-    actualizarCarrito()
-}
-
-const eliminarDelCarrito = (prodId) => {
-    const item = carrito.find((prod) => prod.id === prodId)
-    const indice = carrito.indexOf(item)
-    carrito.splice(indice, 1) 
-
-    actualizarCarrito()
-}
-
-const actualizarCarrito = () => {
-    contenedorCarrito.innerHTML = ""
-
-    carrito.forEach((prod) => {
-       const div = document.createElement('div')
-       div.className = ('productoEnCarrito')
-       div.innerHTML = `
-       <img
-       <p>${prod.nombre}</p>
-       <p>Precio: ${prod.precio}</p>
-       <p>Cantidad: <span id="cantidad">${prod.cantidad}</p>
-       <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></button>
-       `
-       contenedorCarrito.appendChild(div)
-       localStorage.setItem('carrito', JSON.stringify(carrito))
-    })
-    contadorCarrito.innerText = carrito.length
-    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.precio, 0)
-}
+}) */

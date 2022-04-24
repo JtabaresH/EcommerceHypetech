@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html> -->
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -9,10 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
-    <script src="https://kit.fontawesome.com/df59baf6b8.js" crossorigin="anonymous"></script>
-    <script defer src="./assets/Javascript/stock.js"></script>
-    <script defer src="./assets/Javascript/modal.js"></script>
-    <script defer src="./assets/Javascript/app.js"></script>
     <title>Tienda de Licencias Online</title>
 </head>
 <body>
@@ -33,8 +29,31 @@
         <div class="menu-icons">
 
             <img src="./assets/icons/dark-mode.svg" alt="">
-            <!-- <img src="./assets/icons/icon-bag.svg" alt="" id="boton-carrito"> -->
-            <button id="boton-carrito"><i class="fas fa-shopping-cart"></i><span id="contadorCarrito">0</span></button>
+            
+            <button class="boton-carrito" id="boton-carrito">
+            <img src="./assets/icons/icon-bag.svg" alt=""></button>
+            <div class="ventanaCarrito" id="ventanaCarrito">
+                <div class="carrito-compras">
+                    <button class="boton-carrito cerrarb" id="cerrar-carrito"><img src="./assets/icons/cerrar.svg" alt=""></button>
+                </div>
+                <div class="carrito" id="carrito">
+                    <h1>CARRITO</h1>
+                    <table id="lista-carrito" class="table">
+                        <thead>
+                            <tr>
+                                <th>Imagen</th>
+                                <th>Nombre</th>
+                                <th>Cantidad (Und)</th>
+                                <th>Precio (USD)</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    
+                    <a href="#" id="vaciar-carrito" class="btn btn-primary btn-block">Vaciar Carrito</a>
+                </div>
+            </div>
             <input type="checkbox" id="menu-hamburguesa">
             <label for="menu-hamburguesa"><img src="./assets/icons/responsive-menu.svg" alt="" id="icon-bas"></label>
             <ul>
@@ -57,7 +76,7 @@
             <br>
             <br> 
             <br>   
-            <span class="price-home">Licencias desde 40 USD</span>
+            <span class="price-home">Licencias desde $40</span>
             <div class="buttons-home">
                 <div class="descubre"> <a href="#categorys">Descubrir</a></div>
                 <div class="add-cart"> <a href="">AÑADIR AL CARRITO</a></div>
@@ -98,24 +117,14 @@
     </div>
 </main>
 
-<div class="modal-contenedor">
-    <div class="modal-carrito">
-        <h3>Carrito</h3>
-        <button id="carritoCerrar"><i fas fa-times-circle></i></button>
-        <div id="carrito-contenedor">
-
-        </div>
-        <p class="precioProducto">Precio Total: $<span id="precioTotal">0</span></p>
-        <button id="vaciar-carrito" class="boton-agregar">Vaciar carrito</button>
-    </div>
-</div>
-
 <footer class="pie">
   <p>HYPETECH SAS. All rights reserved</p>
 </footer>
 
-    <script src="./assets/Javascript/main.js"></script>
-    
+    <script src="https://kit.fontawesome.com/df59baf6b8.js" crossorigin="anonymous"></script>
+    <script src="./assets/Javascript/stock.js"></script>
+    <script src="./assets/Javascript/app.js"></script>
     <script src="./assets/Javascript/carrito.js"></script>
+    <script src="./assets/Javascript/pedido.js"></script>
 </body>
 </html>
