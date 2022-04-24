@@ -36,6 +36,7 @@ class Carrito{
         </td>
         `;
         listaproductos.appendChild(row);
+        this.saveInLocalStorage(producto);
     }
 
     /* Eliminar producto seleccionado del carrito */
@@ -47,6 +48,7 @@ class Carrito{
             producto = e.target.parentElement.parentElement;
             productoID = producto.querySelector('a').getAttribute('data-id');
         }
+        this.eliminarProductoLocalStorage(productoID);
     }
 
     /* Vaciar carrito */
@@ -55,11 +57,66 @@ class Carrito{
         while(listaproductos.firstChild){
             listaproductos.removeChild(listaproductos.firstChild);
         }
+        this.vaciarLocalStorage();
         return false;
+
     }
 
     /* Local Storage */
-    guardarProductosLocalStorage(producto){
+    saveInLocalStorage(producto){
+        let productos;
+        productos = this.inLocalStorage();
+        productos.push(producto);
+        localStorage.setItem('productos', JSON.stringify(productos));
+    }
 
+    /* Local Storage Actual */
+    inLocalStorage(){
+        let productoLS;
+        if(localStorage.getItem('productos') === null){
+            productoLS = [];
+        } else {
+            productoLS = JSON.parse(localStorage.getItem('productos'));
+        }
+        return productoLS;
+    }
+
+    /* Eliminar producto del Local Storage */
+    eliminarProductoLocalStorage(productoID){
+        let productosLS;
+        productosLS = this.inLocalStorage();
+        productosLS.forEach(function(productoLS, index){
+            if(productoLS.id === productoID){
+                productosLS.splice(index, 1);
+            }
+        });
+        localStorage.setItem('productos', JSON.stringify(productosLS));
+    }
+
+    /* Cargar artiulos en el Local Storage al actualizar */
+    leerLocalStorage(){
+        let productosLS;
+        productosLS = this.inLocalStorage();
+        productosLS.forEach(function(producto){
+            const row = document.createElement('tr');
+            row.classList.add('listadoEnCarrito')
+            row.innerHTML = `
+            <td>
+                <img src="${producto.imagen}" width=50>
+            </td>
+            <td>${producto.titulo}</td>
+            <td>${producto.cantidad}</td>
+            <td>${producto.precio}</td>
+            <td>
+                <a href="#" class="borrar-producto far fa-trash-alt" data-id="${producto.id}"></a>
+            </td>
+            `;
+            listaproductos.appendChild(row);
+        });
+    }
+
+    /* Eliminar todos los productos del local Storage */
+    vaciarLocalStorage(){
+        localStorage.clear();
     }
 }
